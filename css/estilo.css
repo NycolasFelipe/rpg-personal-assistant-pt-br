@@ -1,0 +1,716 @@
+@charset "utf-8";
+
+:root {
+    --corPrincipal: #111111;
+    --corSecundaria: #0a0a0a;
+}
+
+body {
+    background: url("../img/fundo-body.jpg");
+    background-size: 100%;
+    background-position: center;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: #ffffff;
+    transition: all 1s ease;
+}
+
+.bodyClaro {
+    background: url("../img/fundo-body-claro.jpg") !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+
+}
+
+div#interface main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 95vw;
+    margin: 15px auto 0;
+}
+
+hr {
+    border-color: #808080;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+h2 {
+    font-weight: bolder;
+}
+
+section {
+    margin-bottom: 15px;
+    transition: all 0.5s ease;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px 15px;
+    border: none;
+    outline: none;
+    font-family: monospace;
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    text-decoration: underline;
+}
+
+
+/*Logo abaixo*/
+
+section#logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    width: 20%;
+    height: 180px;
+    border-radius: 15px;
+    background-color: var(--corPrincipal);
+    background-size: cover;
+    box-shadow: 1px 1px 4px #000000;
+}
+
+div#titulo-logo {
+    background-image: url("../img/sauron.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 50px;
+    filter: invert(100%);
+}
+
+div#descricao1 {
+    background-image: url("../img/descricao1.png");
+    background-size: 95%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: -25px;
+    width: 200px;
+}
+
+div#descricao2 {
+    background-image: url("../img/descricao2.png");
+    background-size: 75%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 200px;
+    margin-top: -20px;
+    margin-bottom: 3%;
+}
+
+.descricao {
+    width: 80%;
+    height: 20%;
+    filter: invert(100%);
+}
+
+div#titulo-logo h1 {
+    font-family: Tolkien, sans-serif;
+    font-weight: bolder;
+    font-size: 2.5em;
+    margin-top: 15px;
+}
+
+div#titulo-logo p {
+    margin-top: -35px;
+    font-size: 0.9em;
+    font-family: 'Bree Serif', sans-serif;
+}
+
+img#imagem-logo {
+    width: 70px;
+    margin-top: -10px;
+    filter: invert(100%);
+}
+
+/*Logo acima*/
+
+
+/*Rolagem abaixo*/
+
+section#rolagem-dados {
+    background: var(--corPrincipal);
+    position: relative;
+    width: 55%;
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px #000000;
+}
+
+div#fundoDados {
+    display: flex;
+    justify-content: center;
+}
+
+.dados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.dadoPng {
+    width: 80px;
+    filter: drop-shadow(1px 0px 1px #000000);
+}
+
+.dadoBotao {
+    font-weight: bolder;
+    background: #c7c7c7;
+    box-shadow: 1px 1px 2px #000000;
+}
+
+.dadoBotao:active {
+    position: relative;
+    transform: scale(1.05);
+    transition: all 0.4s ease;
+}
+
+.dadoValor {
+    display: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    color: #ffffff;
+    position: absolute;
+    top: 90px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+div#modo-noturno {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+img#tocha {
+    width: 60px;
+}
+
+img#tocha:hover {
+    transform: scale(1.1);
+}
+
+img#tocha:active {
+    transform: scale(1.2);
+}
+
+img#tocha:hover + p#dicaTocha {
+    display: block;
+}
+
+p#dicaTocha {
+    display: none;
+    position: absolute;
+    top: -5px;
+    right: 50px;
+    font-size: 0.8em;
+    font-weight: bolder;
+    background: #313131;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+p#dicaTocha:hover {
+    display: inline-block;
+    cursor: pointer;
+}
+
+/*Rolagem acima*/
+
+
+/*Trilha Sonora abaixo*/
+
+section#trilha {
+    position: relative;
+    background: var(--corSecundaria);
+    border-radius: 15px;
+    width: 22%;
+    box-shadow: 1px 1px 4px #000000;
+}
+
+section#trilha h2 {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+div#imagens-trilha {
+    position: relative;
+}
+
+div#imagens-trilha ul {
+    position: absolute;
+    right: 8%;
+    top: -20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style: none;
+    color: #ffffff;
+    width: 85%;
+}
+
+div#imagens-trilha ul li:active {
+    transform: scale(1.1);
+}
+
+div#imagens-trilha ul li {
+    box-shadow: 1px 1px 2px #000000;
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+    display: block;
+    width: 38%;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 1.1em;
+    font-weight: bolder;
+    transition: all 0.5s ease-out;
+    position: relative;
+}
+
+div#imagens-trilha ul li:hover {
+    text-decoration: underline;
+}
+
+div#imagens-trilha ul li#trilha-1 {
+    background-image: url("../img/trilha-ambiente.jpg");
+    color: #000000;
+    width: 87%;
+}
+
+div#imagens-trilha ul li#trilha-2 {
+    background-image: url("../img/trilha-taverna.jpg");
+}
+
+div#imagens-trilha ul li#trilha-3 {
+    background-image: url("../img/trilha-cidade.jpg");
+}
+
+div#imagens-trilha ul li#trilha-4 {
+    background-image: url("../img/trilha-chuva.jpg");
+}
+
+div#imagens-trilha ul li#trilha-5 {
+    background-image: url("../img/trilha-tempestade.jpg");
+}
+
+div#imagens-trilha ul li#trilha-6 {
+    background-image: url("../img/trilha-dungeon.jpg");
+}
+
+div#imagens-trilha ul li#trilha-7 {
+    background-image: url("../img/trilha-batalha.jpg");
+}
+
+span#info-trilha1 {
+    font-size: 1.3em;
+    font-weight: bolder;
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    cursor: pointer;
+}
+
+span#info-trilha1:hover {
+    transform: scale(1.1);
+}
+
+span#info-trilha1:hover + span#info-trilha2 {
+    display: block;
+}
+
+span#info-trilha2 {
+    display: none;
+    font-size: 0.8em;
+    top: 15px;
+    left: 20px;
+    position: absolute;
+    background: #313131;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+}
+
+.copiado {
+    color: transparent !important;
+    background: #3ab33a !important;
+    transition: none !important;
+}
+
+.copiado::after {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff !important;
+    content: "Copiado!";
+}
+
+.copiado-trilha-1 {
+    color: transparent !important;
+    background: #3ab33a !important;
+    transition: none !important;
+}
+
+.copiado-trilha-1::after {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff !important;
+    content: "Copiado!";
+}
+
+/*Trilha Sonora acima*/
+
+
+/*Jogadores abaixo*/
+
+section#jogadores {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    height: 1060px;
+    width: 76%;
+    overflow: hidden;
+    background: var(--corPrincipal);
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px #000000;
+}
+
+section#jogadores hr {
+    margin-bottom: 30px;
+}
+
+div#apagar-cartas {
+    width: 30%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+div#apagar-cartas:hover > span#legenda-lixeira {
+    display: block;
+}
+
+div#apagar-cartas:hover > img#icone-lixeira {
+    transform: scale(1.1);
+}
+
+div#apagar-cartas:active > img#icone-lixeira {
+    transform: scale(1.2);
+}
+
+img#icone-lixeira {
+    position: absolute;
+    width: 40px;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+span#legenda-lixeira {
+    display: none;
+    font-size: 0.8em;
+    width: 60%;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    background: #313131;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+span#legenda-lixeira:hover {
+    display: block;
+}
+
+div#flexbox-cartas {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -2%;
+    justify-content: center;
+    height: 960px;
+    overflow: hidden;
+    padding-top: 6px;
+}
+
+.carta {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.carta, div#botaoMais {
+    box-shadow: 1px 1px 4px #000000;
+}
+
+div#botaoMais {
+    display: none;
+    flex-direction: column;
+    align-items: unsafe center;
+    width: 290px;
+    height: 430px;
+    background: url("../img/fundo-carta-mais.jpg");
+    background-position: center;
+    background-size: 100%;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    padding: 15px 0px;
+    margin-left: 2%;
+    cursor: pointer;
+    transition: all 0.6s ease;
+}
+
+div#botaoMais:hover {
+    transform: scale(1.02);
+    transition: all 0.3s;
+    overflow: auto;
+}
+
+@media (min-width: 1400px) {
+    section#jogadores {
+        height: 1100px
+    }
+
+    div#flexbox-cartas {
+        height: 980px;
+    }
+
+    div#botaoMais {
+        height: 440px;
+    }
+}
+
+/*Jogadores acima*/
+
+
+/*Lateral abaixo*/
+
+aside#lateral {
+    background: var(--corSecundaria);
+    height: 1060px;
+    width: 22%;
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px #000000;
+}
+
+aside#lateral h2 {
+    font-size: 1.1em;
+}
+
+@media (min-width: 1400px) {
+    aside#lateral {
+        height: 1100px
+    }
+    aside#lateral h2 {
+        margin-top: 20px;
+    }
+}
+
+/*Lateral acima*/
+
+
+/*Anotações abaixo*/
+
+textarea#anotacoes {
+    margin-top: 5px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px #000000;
+    border: 1px solid #000000;
+    padding: 6px 10px;
+    width: 75%;
+    height: 300px;
+    resize: none;
+    outline: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #ffffff;
+    background: url("../img/fundo-anotacoes.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+button#button-anotacao {
+    background: #c7c7c7;
+    font-weight: bolder;
+    width: 78%;
+    box-shadow: 1px 1px 2px #000000;
+}
+
+button#button-anotacao:active {
+    transform: scale(1.05);
+    transition: all 0.4s ease;
+}
+
+/*Anotações acima*/
+
+
+/*Clima abaixo*/
+
+section#clima {
+    margin-top: 30px;
+}
+
+button#geraClima {
+    background: url("../img/botaoGeraClima.png");
+    background-size: cover !important;
+    font-family: monospace;
+    font-size: 1.1em;
+    font-weight: bolder;
+    width: 80%;
+    height: 40px;
+    box-shadow: 1px 1px 2px #000000;
+    transition: all 1s ease;
+}
+
+button#geraClima:active {
+    transform: scale(1.1);
+}
+
+.climaSolEscaldante, .climaSolForte {
+    background: url("../img/clima-sol.jpg")!important;
+}
+
+.climaNublado, .climaNubladoCarregadas {
+    background: url("../img/clima-nublado.jpg")!important;
+    color: #ffffff !important;
+}
+
+.climaChuva, .climaChuvaLeve {
+    background: url("../img/clima-chuva.jpg")!important;
+}
+
+.climaTempoClaro {
+    background: url("../img/clima-tempo-claro.jpg")!important;
+}
+
+.climaTempestade {
+    background: url("../img/clima-tempestade-nevasca.jpg")!important;
+    color: #ffffff !important;
+}
+
+/*Clima acima*/
+
+
+/*Informações úteis abaixo*/
+
+section#informacoes-uteis {
+    margin-top: 30px;
+}
+
+section#informacoes-uteis h2 {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+section#informacoes-uteis article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+}
+
+caption {
+    font-weight: bolder;
+    font-size: 1em;
+    margin-bottom: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.primeiraLinha {
+    color: #7e7edf;
+    font-weight: bolder;
+}
+
+.ce {
+    text-align: left;
+}
+
+table {
+    background: #2a2a38;
+    padding: 5px 10px;
+    border-radius: 10px;
+    width: 82%;
+    font-family: monospace;
+    font-size: 0.9em;
+    text-align: right;
+    line-height: 1;
+    box-shadow: 1px 1px 2px #000000;
+}
+
+@media (min-width: 1400px) {
+    table {
+        line-height: 1.3;
+    }
+}
+
+/*Informações úteis acima*/
+
+
+/*Rodapé abaixo*/
+
+footer#rodape {
+    background: var(--corSecundaria);
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px #000000;
+    height: 200px;
+    width: 96.5%;
+    padding: 5px 0 0;
+    margin-bottom: 20px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+p#rodape-conheca {
+    font-size: 1.5em;
+}
+
+footer#rodape a {
+    display: inline-block;
+    padding: 10px 20px;
+    transition: all 0.5s ease;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+footer#rodape a:hover {
+    transform: translateY(5%);
+    transition: all 0.5s ease;
+}
+
+.footer-icon {
+    width: 25px;
+    vertical-align: middle;
+}
+
+.linkedin {
+    width: 25px;
+    margin-bottom: 5px;
+}
+
+footer ul {
+    font-size: 1.4em;
+    padding-right: 40px;
+}
+
+footer ul li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/*Rodapé acima*/
+
+@media (min-width: 1380px) {
+    footer#rodape {
+        width: 96%;
+    }
+}

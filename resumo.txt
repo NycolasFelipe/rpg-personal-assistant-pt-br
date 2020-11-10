@@ -1,0 +1,117 @@
+Adicionar alerta para confirmar exclusao de carta
+
+<<DADOS>>
+1d4
+1d6
+1d8
+1d10
+1d12
+1d20
+
+<<JOGADORES>>
+
+Nome Jogador
+Nome Personagem
+Classe
+Raça
+Tendência
+Pontos de experiência
+
+Resumo:
+
+Habilidade	Pontos (bônus)
+For		8 (-1)
+Des	
+Cons	
+Int		
+Sab	
+Car
+
+CA
+Iniciativa
+Vida
+
+<<TRILHAS SONORAS>>
+
+(Quando eu clicar em uma dessas, pegar um link aleatório)
+
+Music & Ambience
+!play https://youtu.be/AKkl1z-yIts
+!play https://youtu.be/aK4JSwhdcdE
+!play https://youtu.be/xFjpTF4-PgI
+
+Tavern
+!play https://youtu.be/dd10InDdvJE
+!play https://youtu.be/3p8jLMz0lu8
+!play https://youtu.be/Yf1nWoxQQSY
+!play https://youtu.be/Oeo2VCCtUZQ
+
+Towns
+!play https://youtu.be/NeOg8iCFfTA
+!play https://youtu.be/Da9S9yjZZP4
+!play https://youtu.be/x2UulCWGess
+!play https://youtu.be/eCMO-LpKsU8
+!play https://youtu.be/ZiHtOVw8zsA
+
+Rainy
+!play https://youtu.be/iEMiBRXygbQ
+!play https://youtu.be/Jde-TFha0ko
+
+Storm
+!play https://youtu.be/Uj0DuD92TIk
+
+Dungeons
+!play https://youtu.be/K1JvqHnSHfc
+!play https://youtu.be/kxqJuc1HHbg
+
+Battles
+!play https://youtu.be/lAGm9MTyRJ8
+!play https://youtu.be/-7fbkELXxWg
+!play https://youtu.be/vDL6741wq7s
+!play https://youtu.be/V5Watai4qPM
+!play https://youtu.be/r2vRdOq_JUs
+
+
+<<CLIMA>>
+Quando eu clicar, selecionar um aleatoriamente
+
+d8	Clima
+1	Sol escaldante
+2	Sol forte com clima seco
+3	Tempo claro
+4	Nublado
+5	Nublado com nuvens carregadas
+6	Chuva leve
+7	Chuva
+8	Tempestade/Nevasca
+
+
+<<CLASSES DE DIFICULDADE>>
+
+Dificuldade		CD
+Muito fácil		5	
+Fácil			10
+Moderado		15
+Difícil			20
+Muito difícil		25
+Quase impossível	30
+
+
+<<MULTIPLICADOR DE XP>>
+
+Quantidade de monstros	Multiplicador de XP
+Solitário		-
+Par (2)			x1.5
+Grupo (3 a 6)		x2
+Gangue (7 a 10)		x2.5
+Bando (11 a 14)		x3
+Horda (15 ou mais)	x4
+
+
+<<XP POR ND DE PERSONAGEM>>
+
+Fácil		25 x ND
+Médio		50 x ND
+Difícil		75 x ND
+Mortal		100 x ND
+

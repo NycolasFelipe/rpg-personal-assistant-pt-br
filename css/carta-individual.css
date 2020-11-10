@@ -1,0 +1,195 @@
+:root {
+    /*Carta 1:*/
+    --fotoCarta1: url("../img-perfil-cartas/jogador1.jpg");
+    --fundoCarta1: url("../img/fundo-carta-1.jpg");
+    --corCarta1: linear-gradient(45deg, #be0000, #ff0000);
+
+    /*Carta 2:*/
+    --fotoCarta2: url("../img-perfil-cartas/jogador2.jpg");
+    --fundoCarta2: url("../img/fundo-carta-2.jpg");
+    --corCarta2: linear-gradient(45deg, #0070cc, #0000c0);
+
+    /*Carta 3:*/
+    --fotoCarta3: url("../img-perfil-cartas/jogador3.jpg");
+    --fundoCarta3: url("../img/fundo-carta-3.jpg");
+    --corCarta3: linear-gradient(45deg, #1ba31b, #00cc55);
+
+    /*Carta 4:*/
+    --fotoCarta4: url("../img-perfil-cartas/jogador4.jpg");
+    --fundoCarta4: url("../img/fundo-carta-4.jpg");
+    --corCarta4: linear-gradient(45deg, #cc00ff, #800080);
+
+    /*Carta 5:*/
+    --fotoCarta5: url("../img-perfil-cartas/jogador5.jpg");
+    --fundoCarta5: url("../img/fundo-carta-5.jpg");
+    --corCarta5: linear-gradient(45deg, #5a3113, #570d0d);
+
+    /*Carta 6:*/
+    --fotoCarta6: url("../img-perfil-cartas/jogador6.jpg");
+    --fundoCarta6: url("../img/fundo-carta-6.jpg");
+    --corCarta6: linear-gradient(45deg, #ffff00, #f8f856);
+
+    /*Carta 7:*/
+    --fotoCarta7: url("../img-perfil-cartas/jogador7.jpg");
+    --fundoCarta7: url("../img/fundo-carta-7.jpg");
+    --corCarta7: linear-gradient(45deg, #e06118, #d14403);
+
+    /*Carta 8:*/
+    --fotoCarta8: url("../img-perfil-cartas/jogador8.jpg");
+    --fundoCarta8: url("../img/fundo-carta-8.jpg");
+    --corCarta8: linear-gradient(45deg, #0b3a3b, #124664);
+}
+
+/*Carta 1:*/
+div#carta-jogador1 {
+    background: var(--fundoCarta1);
+}
+
+div#carta-jogador1 .nome-jogador {
+    background: var(--corCarta1);
+}
+
+div#foto-personagem1 {
+    background: var(--fotoCarta1);
+    background-size: cover;
+}
+
+div#nome-personagem1 {
+    background: var(--corCarta1);
+}
+
+/*Carta 2:*/
+div#carta-jogador2 {
+    background: var(--fundoCarta2);
+}
+
+div#carta-jogador2 .nome-jogador {
+    background: var(--corCarta2);
+}
+
+div#foto-personagem2 {
+    background: var(--fotoCarta2);
+    background-size: cover;
+}
+
+div#nome-personagem2 {
+    background: var(--corCarta2);
+}
+
+/*Carta 3:*/
+div#carta-jogador3 {
+    background: var(--fundoCarta3);
+}
+
+div#carta-jogador3 .nome-jogador {
+    background: var(--corCarta3);
+}
+
+div#foto-personagem3 {
+    background: var(--fotoCarta3);
+    background-size: cover;
+}
+
+div#nome-personagem3 {
+    background: var(--corCarta3);
+}
+
+/*Carta 4:*/
+div#carta-jogador4 {
+    background: var(--fundoCarta4);
+}
+
+div#carta-jogador4 .nome-jogador {
+    background: var(--corCarta4);
+}
+
+div#foto-personagem4 {
+    background: var(--fotoCarta4);
+    background-size: cover;
+}
+
+div#nome-personagem4 {
+    background: var(--corCarta4);
+}
+
+/*Carta 5:*/
+div#carta-jogador5 {
+    background: var(--fundoCarta5);
+}
+
+div#carta-jogador5 .nome-jogador {
+    background: var(--corCarta5);
+}
+
+div#foto-personagem5 {
+    background: var(--fotoCarta5);
+    background-size: cover;
+}
+
+div#nome-personagem5 {
+    background: var(--corCarta5);
+}
+
+/*Carta 6:*/
+div#carta-jogador6 {
+    background: var(--fundoCarta6);
+}
+
+div#carta-jogador6 .nome-jogador {
+    background: var(--corCarta6);
+}
+
+div#foto-personagem6 {
+    background: var(--fotoCarta6);
+    background-size: cover;
+}
+
+div#nome-personagem6 {
+    background: var(--corCarta6);
+}
+
+/*Carta 7:*/
+div#carta-jogador7 {
+    background: var(--fundoCarta7);
+}
+
+div#carta-jogador7 .nome-jogador {
+    background: var(--corCarta7);
+}
+
+div#foto-personagem7 {
+    background: var(--fotoCarta7);
+    background-size: cover;
+}
+
+div#nome-personagem7 {
+    background: var(--corCarta7);
+}
+
+/*Carta 8:*/
+div#carta-jogador8 {
+    background: var(--fundoCarta8);
+}
+
+div#carta-jogador8 .nome-jogador {
+    background: var(--corCarta8);
+}
+
+div#foto-personagem8 {
+    background: var(--fotoCarta8);
+    background-size: cover;
+}
+
+div#nome-personagem8 {
+    background: var(--corCarta8);
+}
+
+/*Extra*/
+
+div#nome-jogador6 label {
+    color: #000000;
+}
+
+div#nome-personagem6 label {
+    color: #000000;
+}

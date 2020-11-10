@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.A.U.R.O.N.</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/cartas.css">
+    <link rel="stylesheet" href="css/carta-individual.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+<body onload="botaoMais(), carregaDados()">
+    <div id="interface">
+        <main>
+            <section id="logo">
+                <div id="titulo-logo"></div>
+                <div id="descricao1" class="descricao"></div>
+                <div id="descricao2" class="descricao"></div>
+                <img src="img/imagem-logo.gif" alt="Imagem logo" id="imagem-logo">
+            </section>
+
+            <section id="rolagem-dados">
+                <h2>Rolagem de dados</h1>
+                <hr>
+                <div id="fundoDados">
+                    <div class="dados">
+                        <p id="valorD4" class="dadoValor">0</p>
+                        <img onclick="limpaDado(4)" id="dadoD4" src="img/d4_blank.png" alt="Dado d4" class="dadoPng">
+                        <button id="botaoD4" class="dadoBotao" onclick="rolagem(4)">Rolar d4</button>
+                    </div>
+
+                    <div class="dados">
+                        <p id="valorD6" class="dadoValor">0</p>
+                        <img onclick="limpaDado(6)" id="dadoD6" src="img/d6_blank.png" alt="Dado d6" class="dadoPng">
+                        <button id="botaoD6" class="dadoBotao" onclick="rolagem(6)">Rolar d6</button>
+                    </div>
+                    
+                    <div class="dados">
+                        <p id="valorD8" class="dadoValor">0</p>
+                        <img onclick="limpaDado(8)" id="dadoD8" src="img/d8_blank.png" alt="Dado d8" class="dadoPng">
+                        <button id="botaoD8" class="dadoBotao" onclick="rolagem(8)">Rolar d8</button>
+                    </div>
+                    
+                    <div class="dados">
+                        <p id="valorD10" class="dadoValor">0</p>
+                        <img onclick="limpaDado(10)" id="dadoD10" src="img/d10_blank.png" alt="Dado d10" class="dadoPng">
+                        <button id="botaoD10" class="dadoBotao" onclick="rolagem(10)">Rolar d10</button>
+                    </div>
+                    
+                    <div class="dados">
+                        <p id="valorD12" class="dadoValor">0</p>
+                        <img onclick="limpaDado(12)" id="dadoD12" src="img/d12_blank.png" alt="Dado d12" class="dadoPng">
+                        <button id="botaoD12" class="dadoBotao" onclick="rolagem(12)">Rolar d12</button>
+                    </div>
+                
+                    <div class="dados">
+                        <p id="valorD20" class="dadoValor">0</p>
+                        <img onclick="limpaDado(20)" id="dadoD20" src="img/d20_blank.png" alt="Dado d20" class="dadoPng">
+                        <button id="botaoD20" class="dadoBotao" onclick="rolagem(20)">Rolar d20</button>
+                    </div>
+                </div>
+
+                <div onclick="modoNoturno()" id="modo-noturno">
+                    <img src="img/tocha.gif" alt="Ativar/desativar modo noturno" id="tocha">
+                    <p id="dicaTocha">Acenda<br>a luz!</p>
+                </div>
+            </section>
+            
+            <section id="trilha">
+                <h2>Trilha Sonora</h2>
+                <hr>
+                <div id="imagens-trilha">
+                    <ul>
+                        <li id="trilha-1" onclick="trilha(trilhaAmbiente), copiado(1)">Música & Ambiente</li>
+                        <li id="trilha-2" onclick="trilha(trilhaTaverna), copiado(2)">Taverna</li>
+                        <li id="trilha-3" onclick="trilha(trilhaCidade), copiado(3)">Cidade</li>
+                        <li id="trilha-4" onclick="trilha(trilhaChuva), copiado(4)">Chuva</li>
+                        <li id="trilha-5" onclick="trilha(trilhaTempestade), copiado(5)">Tempestade</li>
+                        <li id="trilha-6" onclick="trilha(trilhaDungeon), copiado(6)">Dungeon</li>
+                        <li id="trilha-7" onclick="trilha(trilhaBatalha), copiado(7)">Batalha</li>
+                    </ul>
+                </div>
+                <span id="info-trilha1">?</span>
+                <span id="info-trilha2">Clique para copiar o link!</span>
+            </section>
+
+            <section id="jogadores">
+                <h2>Jogadores</h2>
+                <hr>
+                <div onclick="apagaTudo()" id="apagar-cartas">
+                    <img src="img/lixeira.png" id="icone-lixeira" alt="Ícone para apagar todas as cartas">
+                    <span id="legenda-lixeira">Clique aqui para apagar todas as cartas!</span>
+                </div>
+                
+                <div id="flexbox-cartas">
+                    <div id="botaoMais" onclick="adicionaCarta()"></div>
+                </div>
+
+                <div id="modelos-cartas">
+                    <div id="carta-jogador1" class="carta">
+                        <div id="nome-jogador1" class="nome-jogador">
+                            <form action="" id="nomeJCarta1">
+                                <label for="nomeJogador1">Jogador: </label><input onchange="salvaInput(nomeJogador1)" type="text" name="nomeJogador1" id="nomeJogador1" placeholder="Nome do jogador 1...">
+                            </form>
+                        </div>
+            
+                        <div id="foto-personagem1" class="foto-personagem"></div>
+            
+                        <div id="nome-personagem1" class="nome-personagem">
+                            <form action="" id="nomePCarta1">
+                                <label for="nomePersonagem1">Personagem: </label><input onchange="salvaInput(nomePersonagem1)" type="text" name="nomePersonagem1" id="nomePersonagem1" placeholder="Nome do personagem...">
+                            </form>
+                        </div>
+            
+                        <div id="dados-personagem1" class="dados-personagem">
+                            <div id="info-personagem1" class="info-personagem">
+                                <form action="" id="infoPCarta1">
+                                    <p class="first-info"><label for="infoClasse1">Classe: </label><select onchange="salvaInput(infoClasse1)" name="infoClasse1" id="infoClasse1">
+                                        <option value="barbaro">Bárbaro</option>
+                                        <option value="bardo">Bardo</option>
+                                        <option value="bruxo">Bruxo</option>
+                                        <option value="clerigo">Clérigo</option>
+                                        <option value="druida">Druida</option>
+                                        <option value="feiticeiro">Feiticeiro</option>
+                                        <option value="guerreiro">Guerreiro</option>
+                                        <option value="ladino">Ladino</option>
+                                        <option value="mago">Mago</option>
+                                        <option value="monge">Monge</option>
+                                        <option value="paladino">Paladino</option>
+                                        <option value="patrulheiro">Patrulheiro</option>
+                                    </select></p>
+                
+                                    <p><label for="infoRaça1">Raça: </label><select onchange="salvaInput(infoRaça1)" name="infoRaça1" id="infoRaça1">
+                                        <optgroup label="Anão">
+                                            <option value="anao">Anão</option>
+                                            <option value="anaoDaColina">Anão da Colina</option>
+                                            <option value="anaoDaMontanha">Anão da Montanha</option>
+                                        </optgroup>
+                                        
+                                        <optgroup label="Elfo">
+                                            <option value="elfo">Elfo</option>
+                                            <option value="altoElfo">Alto Elfo</option>
+                                            <option value="elfoDaFloresta">Elfo da Floresta</option>
+                                            <option value="elfoNegro">Elfo Negro</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Halfling">
+                                            <option value="halfling">Halfling</option>
+                                            <option value="halflingLightfoot">Halfling Pés Leves</option>
+                                            <option value="halflingStout">Halfling Robusto</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Humano">
+                                            <option value="humano">Humano</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Draconato">
+                                            <option value="draconato">Draconato</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Gnomo">
+                                            <option value="gnomo">Gnomo</option>
+                                            <option value="gnomoDaFloresta">Gnomo da Floresta</option>
+                                            <option value="gnomoDaPedra">Gnomo da Pedra</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Meio-Elfo">
+                                            <option value="meioElfo">Meio-Elfo</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Meio-Orc">
+                                            <option value="meioOrc">Meio-Orc</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Tiefling">
+                                            <option value="tiefling">Tiefling</option>
+                                        </optgroup>
+                                    </select></p>
+                
+                                    <p><label for="tendencia1">Tendência: </label><select onchange="salvaInput(tendencia1)" name="tendencia1" id="tendencia1">
+                                        <optgroup label="Leal">
+                                            <option value="lealBom">Leal e Bom</option>
+                                            <option value="lealNeutro">Leal e Neutro</option>
+                                            <option value="lealMau">Leal e Mau</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Neutro">
+                                            <option value="neutroBom">Neutro e Bom</option>
+                                            <option value="neutro">Neutro</option>
+                                            <option value="neutroMau">Neutro e Mau</option>
+                                        </optgroup>
+                
+                                        <optgroup label="Caótico">
+                                            <option value="caoticoBom">Caótico e Bom</option>
+                                            <option value="caoticoNeutro">Caótico e Neutro</option>
+                                            <option value="caoticoMau">Caótico e Mau</option>
+                                        </optgroup>
+                                    </select></p>
+                
+                                    <div class="info-inputs">
+                                        <p><label for="pontosXp1">Pontos XP: </label><input onchange="salvaInput(pontosXp1)" type="number" name="pontosXp1" id="pontosXp1" min="0"></p>
+                
+                                        <p><label for="ca1">CA: </label><input onchange="salvaInput(ca1)" type="number" name="ca1" id="ca1" min="0"></p>
+                
+                                        <p><label for="iniciativa1">Iniciativa: </label><input onchange="salvaInput(iniciativa1)" type="number" name="iniciativa1" id="iniciativa1" min="0"></p>
+                
+                                        <p><label for="vida1">Pts de Vida: </label><input onchange="salvaInput(vida1)" type="number" name="vida1" id="vida1" min="0"></p>
+                                    </div>
+                                </form>  
+                            </div>
+            
+                            <div id="habilidade-personagem1" class="habilidade-personagem">
+                                <span id="legenda-habilidade1">Habilidade: </span>
+                                <form action="" id="HabPCarta1">
+                                    <p class="first-hab"><label for="força1">FOR </label><input onchange="salvaInput(força1)" type="text" name="força1" id="força1"></p>
+                                    <p><label for="destreza1">DES </label><input onchange="salvaInput(destreza1)" type="text" name="destreza1" id="destreza1"></p>
+                                    <p><label for="constituicao1">CON </label><input onchange="salvaInput(constituicao1)" type="text" name="constituicao1" id="constituicao1"></p>
+                                    <p><label for="inteligencia1">INT </label><input onchange="salvaInput(inteligencia1)" type="text" name="inteligencia1" id="inteligencia1"></p>
+                                    <p><label for="sabedoria1">SAB </label><input onchange="salvaInput(sabedoria1)" type="text" name="sabedoria1" id="sabedoria1"></p>
+                                    <p><label for="carisma1">CAR </label><input onchange="salvaInput(carisma1)" type="text" name="carisma1" id="carisma1"></p>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div id="botoes1" class="botoes">
+                            <button id="limpaCarta1" onclick="limpa(1)">Limpar</button>
+                            <button id="salvaCarta1" onclick="salvaEdita(1)">Salvar</button>
+                            <button id="excluiCarta1" onclick="excluiCarta(1)">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div id="carta-jogador2" class="carta">
+                        <div id="nome-jogador2" class="nome-jogador">
+                            <form action="" id="nomeJCarta2">
+                                <label for="nomeJogador2">Jogador: </label><input onchange="salvaInput(nomeJogador2)" type="text" name="nomeJogador2" id="nomeJogador2" placeholder="Nome do jogador 2...">
+                            </form>
+                        </div>
+                    
+                        <div id="foto-personagem2" class="foto-personagem"></div>
+                    
+                        <div id="nome-personagem2" class="nome-personagem">
+                            <form action="" id="nomePCarta2">
+                                <label for="nomePersonagem2">Personagem: </label><input onchange="salvaInput(nomePersonagem2)" type="text" name="nomePersonagem2" id="nomePersonagem2" placeholder="Nome do personagem...">
+                            </form>
+                        </div>
+                    
+                        <div id="dados-personagem2" class="dados-personagem">
+                            <div id="info-personagem2" class="info-personagem">
+                                <form action="" id="infoPCarta2">
+                                    <p class="first-info"><label for="infoClasse2">Classe: </label><select onchange="salvaInput(infoClasse2)" name="infoClasse2" id="infoClasse2">
+                                        <option value="barbaro">Bárbaro</option>
+                                        <option value="bardo">Bardo</option>
+                                        <option value="bruxo">Bruxo</option>
+                                        <option value="clerigo">Clérigo</option>
+                                        <option value="druida">Druida</option>
+                                        <option value="feiticeiro">Feiticeiro</option>
+                                        <option value="guerreiro">Guerreiro</option>
+                                        <option value="ladino">Ladino</option>
+                                        <option value="mago">Mago</option>
+                                        <option value="monge">Monge</option>
+                                        <option value="paladino">Paladino</option>
+                                        <option value="patrulheiro">Patrulheiro</option>
+                                    </select></p>
+                    
+                                    <p><label for="infoRaça2">Raça: </label><select onchange="salvaInput(infoRaça2)" name="infoRaça2" id="infoRaça2">
+                                        <optgroup label="Anão">
+                                            <option value="anao">Anão</option>
+                                            <option value="anaoDaColina">Anão da Colina</option>
+                                            <option value="anaoDaMontanha">Anão da Montanha</option>
+                                        </optgroup>
+                                        
+                                        <optgroup label="Elfo">
+                                            <option value="elfo">Elfo</option>
+                                            <option value="altoElfo">Alto Elfo</option>
+                                            <option value="elfoDaFloresta">Elfo da Floresta</option>
+                                            <option value="elfoNegro">Elfo Negro</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Halfling">
+                                            <option value="halfling">Halfling</option>
+                                            <option value="halflingLightfoot">Halfling Pés Leves</option>
+                                            <option value="halflingStout">Halfling Robusto</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Humano">
+                                            <option value="humano">Humano</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Draconato">
+                                            <option value="draconato">Draconato</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Gnomo">
+                                            <option value="gnomo">Gnomo</option>
+                                            <option value="gnomoDaFloresta">Gnomo da Floresta</option>
+                                            <option value="gnomoDaPedra">Gnomo da Pedra</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Elfo">
+                                            <option value="meioElfo">Meio-Elfo</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Orc">
+                                            <option value="meioOrc">Meio-Orc</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Tiefling">
+                                            <option value="tiefling">Tiefling</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <p><label for="tendencia2">Tendência: </label><select onchange="salvaInput(tendencia2)" name="tendencia2" id="tendencia2">
+                                        <optgroup label="Leal">
+                                            <option value="lealBom">Leal e Bom</option>
+                                            <option value="lealNeutro">Leal e Neutro</option>
+                                            <option value="lealMau">Leal e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Neutro">
+                                            <option value="neutroBom">Neutro e Bom</option>
+                                            <option value="neutro">Neutro</option>
+                                            <option value="neutroMau">Neutro e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Caótico">
+                                            <option value="caoticoBom">Caótico e Bom</option>
+                                            <option value="caoticoNeutro">Caótico e Neutro</option>
+                                            <option value="caoticoMau">Caótico e Mau</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <div class="info-inputs">
+                                        <p><label for="pontosXp2">Pontos XP: </label><input onchange="salvaInput(pontosXp2)" type="number" name="pontosXp2" id="pontosXp2" min="0"></p>
+                    
+                                        <p><label for="ca2">CA: </label><input onchange="salvaInput(ca2)" type="number" name="ca2" id="ca2" min="0"></p>
+                    
+                                        <p><label for="iniciativa2">Iniciativa: </label><input onchange="salvaInput(iniciativa2)" type="number" name="iniciativa2" id="iniciativa2" min="0"></p>
+                    
+                                        <p><label for="vida2">Pts de Vida: </label><input onchange="salvaInput(vida2)" type="number" name="vida2" id="vida2" min="0"></p>
+                                    </div>
+                                </form>  
+                            </div>
+                    
+                            <div id="habilidade-personagem2" class="habilidade-personagem">
+                                <span id="legenda-habilidade2">Habilidade: </span>
+                                <form action="" id="HabPCarta2">
+                                    <p class="first-hab"><label for="força2">FOR </label><input onchange="salvaInput(força2)" type="text" name="força2" id="força2"></p>
+                                    <p><label for="destreza2">DES </label><input onchange="salvaInput(destreza2)" type="text" name="destreza2" id="destreza2"></p>
+                                    <p><label for="constituicao2">CON </label><input onchange="salvaInput(constituicao2)" type="text" name="constituicao2" id="constituicao2"></p>
+                                    <p><label for="inteligencia2">INT </label><input onchange="salvaInput(inteligencia2)" type="text" name="inteligencia2" id="inteligencia2"></p>
+                                    <p><label for="sabedoria2">SAB </label><input onchange="salvaInput(sabedoria2)" type="text" name="sabedoria2" id="sabedoria2"></p>
+                                    <p><label for="carisma2">CAR </label><input onchange="salvaInput(carisma2)" type="text" name="carisma2" id="carisma2"></p>
+                                </form>
+                            </div>
+                        </div>
+                    
+                        <div id="botoes2" class="botoes">
+                            <button id="limpaCarta2" onclick="limpa(2)">Limpar</button>
+                            <button id="salvaCarta2" onclick="salvaEdita(2)">Salvar</button>
+                            <button id="excluiCarta2" onclick="excluiCarta(2)">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div id="carta-jogador3" class="carta">
+                        <div id="nome-jogador3" class="nome-jogador">
+                            <form action="" id="nomeJCarta3">
+                                <label for="nomeJogador3">Jogador: </label><input onchange="salvaInput(nomeJogador3)" type="text" name="nomeJogador3" id="nomeJogador3" placeholder="Nome do jogador 3...">
+                            </form>
+                        </div>
+                    
+                        <div id="foto-personagem3" class="foto-personagem"></div>
+                    
+                        <div id="nome-personagem3" class="nome-personagem">
+                            <form action="" id="nomePCarta3">
+                                <label for="nomePersonagem3">Personagem: </label><input onchange="salvaInput(nomePersonagem3)" type="text" name="nomePersonagem3" id="nomePersonagem3" placeholder="Nome do personagem...">
+                            </form>
+                        </div>
+                    
+                        <div id="dados-personagem3" class="dados-personagem">
+                            <div id="info-personagem3" class="info-personagem">
+                                <form action="" id="infoPCarta3">
+                                    <p class="first-info"><label for="infoClasse3">Classe: </label><select onchange="salvaInput(infoClasse3)" name="infoClasse3" id="infoClasse3">
+                                        <option value="barbaro">Bárbaro</option>
+                                        <option value="bardo">Bardo</option>
+                                        <option value="bruxo">Bruxo</option>
+                                        <option value="clerigo">Clérigo</option>
+                                        <option value="druida">Druida</option>
+                                        <option value="feiticeiro">Feiticeiro</option>
+                                        <option value="guerreiro">Guerreiro</option>
+                                        <option value="ladino">Ladino</option>
+                                        <option value="mago">Mago</option>
+                                        <option value="monge">Monge</option>
+                                        <option value="paladino">Paladino</option>
+                                        <option value="patrulheiro">Patrulheiro</option>
+                                    </select></p>
+                    
+                                    <p><label for="infoRaça3">Raça: </label><select onchange="salvaInput(infoRaça3)" name="infoRaça3" id="infoRaça3">
+                                        <optgroup label="Anão">
+                                            <option value="anao">Anão</option>
+                                            <option value="anaoDaColina">Anão da Colina</option>
+                                            <option value="anaoDaMontanha">Anão da Montanha</option>
+                                        </optgroup>
+                                        
+                                        <optgroup label="Elfo">
+                                            <option value="elfo">Elfo</option>
+                                            <option value="altoElfo">Alto Elfo</option>
+                                            <option value="elfoDaFloresta">Elfo da Floresta</option>
+                                            <option value="elfoNegro">Elfo Negro</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Halfling">
+                                            <option value="halfling">Halfling</option>
+                                            <option value="halflingLightfoot">Halfling Pés Leves</option>
+                                            <option value="halflingStout">Halfling Robusto</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Humano">
+                                            <option value="humano">Humano</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Draconato">
+                                            <option value="draconato">Draconato</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Gnomo">
+                                            <option value="gnomo">Gnomo</option>
+                                            <option value="gnomoDaFloresta">Gnomo da Floresta</option>
+                                            <option value="gnomoDaPedra">Gnomo da Pedra</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Elfo">
+                                            <option value="meioElfo">Meio-Elfo</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Orc">
+                                            <option value="meioOrc">Meio-Orc</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Tiefling">
+                                            <option value="tiefling">Tiefling</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <p><label for="tendencia3">Tendência: </label><select onchange="salvaInput(tendencia3)" name="tendencia3" id="tendencia3">
+                                        <optgroup label="Leal">
+                                            <option value="lealBom">Leal e Bom</option>
+                                            <option value="lealNeutro">Leal e Neutro</option>
+                                            <option value="lealMau">Leal e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Neutro">
+                                            <option value="neutroBom">Neutro e Bom</option>
+                                            <option value="neutro">Neutro</option>
+                                            <option value="neutroMau">Neutro e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Caótico">
+                                            <option value="caoticoBom">Caótico e Bom</option>
+                                            <option value="caoticoNeutro">Caótico e Neutro</option>
+                                            <option value="caoticoMau">Caótico e Mau</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <div class="info-inputs">
+                                        <p><label for="pontosXp3">Pontos XP: </label><input onchange="salvaInput(pontosXp3)" type="number" name="pontosXp3" id="pontosXp3" min="0"></p>
+                    
+                                        <p><label for="ca3">CA: </label><input onchange="salvaInput(ca3)" type="number" name="ca3" id="ca3" min="0"></p>
+                    
+                                        <p><label for="iniciativa3">Iniciativa: </label><input onchange="salvaInput(iniciativa3)" type="number" name="iniciativa3" id="iniciativa3" min="0"></p>
+                    
+                                        <p><label for="vida3">Pts de Vida: </label><input onchange="salvaInput(vida3)" type="number" name="vida3" id="vida3" min="0"></p>
+                                    </div>
+                                </form>  
+                            </div>
+                    
+                            <div id="habilidade-personagem3" class="habilidade-personagem">
+                                <span id="legenda-habilidade3">Habilidade: </span>
+                                <form action="" id="HabPCarta3">
+                                    <p class="first-hab"><label for="força3">FOR </label><input onchange="salvaInput(força3)" type="text" name="força3" id="força3"></p>
+                                    <p><label for="destreza3">DES </label><input onchange="salvaInput(destreza3)" type="text" name="destreza3" id="destreza3"></p>
+                                    <p><label for="constituicao3">CON </label><input onchange="salvaInput(constituicao3)" type="text" name="constituicao3" id="constituicao3"></p>
+                                    <p><label for="inteligencia3">INT </label><input onchange="salvaInput(inteligencia3)" type="text" name="inteligencia3" id="inteligencia3"></p>
+                                    <p><label for="sabedoria3">SAB </label><input onchange="salvaInput(sabedoria3)" type="text" name="sabedoria3" id="sabedoria3"></p>
+                                    <p><label for="carisma3">CAR </label><input onchange="salvaInput(carisma3)" type="text" name="carisma3" id="carisma3"></p>
+                                </form>
+                            </div>
+                        </div>
+                    
+                        <div id="botoes3" class="botoes">
+                            <button id="limpaCarta3" onclick="limpa(3)">Limpar</button>
+                            <button id="salvaCarta3" onclick="salvaEdita(3)">Salvar</button>
+                            <button id="excluiCarta3" onclick="excluiCarta(3)">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div id="carta-jogador4" class="carta">
+                        <div id="nome-jogador4" class="nome-jogador">
+                            <form action="" id="nomeJCarta4">
+                                <label for="nomeJogador4">Jogador: </label><input onchange="salvaInput(nomeJogador4)" type="text" name="nomeJogador4" id="nomeJogador4" placeholder="Nome do jogador 4...">
+                            </form>
+                        </div>
+                    
+                        <div id="foto-personagem4" class="foto-personagem"></div>
+                    
+                        <div id="nome-personagem4" class="nome-personagem">
+                            <form action="" id="nomePCarta4">
+                                <label for="nomePersonagem4">Personagem: </label><input onchange="salvaInput(nomePersonagem4)" type="text" name="nomePersonagem4" id="nomePersonagem4" placeholder="Nome do personagem...">
+                            </form>
+                        </div>
+                    
+                        <div id="dados-personagem4" class="dados-personagem">
+                            <div id="info-personagem4" class="info-personagem">
+                                <form action="" id="infoPCarta4">
+                                    <p class="first-info"><label for="infoClasse4">Classe: </label><select onchange="salvaInput(infoClasse4)" name="infoClasse4" id="infoClasse4">
+                                        <option value="barbaro">Bárbaro</option>
+                                        <option value="bardo">Bardo</option>
+                                        <option value="bruxo">Bruxo</option>
+                                        <option value="clerigo">Clérigo</option>
+                                        <option value="druida">Druida</option>
+                                        <option value="feiticeiro">Feiticeiro</option>
+                                        <option value="guerreiro">Guerreiro</option>
+                                        <option value="ladino">Ladino</option>
+                                        <option value="mago">Mago</option>
+                                        <option value="monge">Monge</option>
+                                        <option value="paladino">Paladino</option>
+                                        <option value="patrulheiro">Patrulheiro</option>
+                                    </select></p>
+                    
+                                    <p><label for="infoRaça4">Raça: </label><select onchange="salvaInput(infoRaça4)" name="infoRaça4" id="infoRaça4">
+                                        <optgroup label="Anão">
+                                            <option value="anao">Anão</option>
+                                            <option value="anaoDaColina">Anão da Colina</option>
+                                            <option value="anaoDaMontanha">Anão da Montanha</option>
+                                        </optgroup>
+                                        
+                                        <optgroup label="Elfo">
+                                            <option value="elfo">Elfo</option>
+                                            <option value="altoElfo">Alto Elfo</option>
+                                            <option value="elfoDaFloresta">Elfo da Floresta</option>
+                                            <option value="elfoNegro">Elfo Negro</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Halfling">
+                                            <option value="halfling">Halfling</option>
+                                            <option value="halflingLightfoot">Halfling Pés Leves</option>
+                                            <option value="halflingStout">Halfling Robusto</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Humano">
+                                            <option value="humano">Humano</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Draconato">
+                                            <option value="draconato">Draconato</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Gnomo">
+                                            <option value="gnomo">Gnomo</option>
+                                            <option value="gnomoDaFloresta">Gnomo da Floresta</option>
+                                            <option value="gnomoDaPedra">Gnomo da Pedra</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Elfo">
+                                            <option value="meioElfo">Meio-Elfo</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Orc">
+                                            <option value="meioOrc">Meio-Orc</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Tiefling">
+                                            <option value="tiefling">Tiefling</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <p><label for="tendencia4">Tendência: </label><select onchange="salvaInput(tendencia4)" name="tendencia4" id="tendencia4">
+                                        <optgroup label="Leal">
+                                            <option value="lealBom">Leal e Bom</option>
+                                            <option value="lealNeutro">Leal e Neutro</option>
+                                            <option value="lealMau">Leal e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Neutro">
+                                            <option value="neutroBom">Neutro e Bom</option>
+                                            <option value="neutro">Neutro</option>
+                                            <option value="neutroMau">Neutro e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Caótico">
+                                            <option value="caoticoBom">Caótico e Bom</option>
+                                            <option value="caoticoNeutro">Caótico e Neutro</option>
+                                            <option value="caoticoMau">Caótico e Mau</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <div class="info-inputs">
+                                        <p><label for="pontosXp4">Pontos XP: </label><input onchange="salvaInput(pontosXp4)" type="number" name="pontosXp4" id="pontosXp4" min="0"></p>
+                    
+                                        <p><label for="ca4">CA: </label><input onchange="salvaInput(ca4)" type="number" name="ca4" id="ca4" min="0"></p>
+                    
+                                        <p><label for="iniciativa4">Iniciativa: </label><input onchange="salvaInput(iniciativa4)" type="number" name="iniciativa4" id="iniciativa4" min="0"></p>
+                    
+                                        <p><label for="vida4">Pts de Vida: </label><input onchange="salvaInput(vida4)" type="number" name="vida4" id="vida4" min="0"></p>
+                                    </div>
+                                </form>  
+                            </div>
+                    
+                            <div id="habilidade-personagem4" class="habilidade-personagem">
+                                <span id="legenda-habilidade4">Habilidade: </span>
+                                <form action="" id="HabPCarta4">
+                                    <p class="first-hab"><label for="força4">FOR </label><input onchange="salvaInput(força4)" type="text" name="força4" id="força4"></p>
+                                    <p><label for="destreza4">DES </label><input onchange="salvaInput(destreza4)" type="text" name="destreza4" id="destreza4"></p>
+                                    <p><label for="constituicao4">CON </label><input onchange="salvaInput(constituicao4)" type="text" name="constituicao4" id="constituicao4"></p>
+                                    <p><label for="inteligencia4">INT </label><input onchange="salvaInput(inteligencia4)" type="text" name="inteligencia4" id="inteligencia4"></p>
+                                    <p><label for="sabedoria4">SAB </label><input onchange="salvaInput(sabedoria4)" type="text" name="sabedoria4" id="sabedoria4"></p>
+                                    <p><label for="carisma4">CAR </label><input onchange="salvaInput(carisma4)" type="text" name="carisma4" id="carisma4"></p>
+                                </form>
+                            </div>
+                        </div>
+                    
+                        <div id="botoes4" class="botoes">
+                            <button id="limpaCarta4" onclick="limpa(4)">Limpar</button>
+                            <button id="salvaCarta4" onclick="salvaEdita(4)">Salvar</button>
+                            <button id="excluiCarta4" onclick="excluiCarta(4)">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div id="carta-jogador5" class="carta">
+                        <div id="nome-jogador5" class="nome-jogador">
+                            <form action="" id="nomeJCarta5">
+                                <label for="nomeJogador5">Jogador: </label><input onchange="salvaInput(nomeJogador5)" type="text" name="nomeJogador5" id="nomeJogador5" placeholder="Nome do jogador 5...">
+                            </form>
+                        </div>
+                    
+                        <div id="foto-personagem5" class="foto-personagem"></div>
+                    
+                        <div id="nome-personagem5" class="nome-personagem">
+                            <form action="" id="nomePCarta5">
+                                <label for="nomePersonagem5">Personagem: </label><input onchange="salvaInput(nomePersonagem5)" type="text" name="nomePersonagem5" id="nomePersonagem5" placeholder="Nome do personagem...">
+                            </form>
+                        </div>
+                    
+                        <div id="dados-personagem5" class="dados-personagem">
+                            <div id="info-personagem5" class="info-personagem">
+                                <form action="" id="infoPCarta5">
+                                    <p class="first-info"><label for="infoClasse5">Classe: </label><select onchange="salvaInput(infoClasse5)" name="infoClasse5" id="infoClasse5">
+                                        <option value="barbaro">Bárbaro</option>
+                                        <option value="bardo">Bardo</option>
+                                        <option value="bruxo">Bruxo</option>
+                                        <option value="clerigo">Clérigo</option>
+                                        <option value="druida">Druida</option>
+                                        <option value="feiticeiro">Feiticeiro</option>
+                                        <option value="guerreiro">Guerreiro</option>
+                                        <option value="ladino">Ladino</option>
+                                        <option value="mago">Mago</option>
+                                        <option value="monge">Monge</option>
+                                        <option value="paladino">Paladino</option>
+                                        <option value="patrulheiro">Patrulheiro</option>
+                                    </select></p>
+                    
+                                    <p><label for="infoRaça5">Raça: </label><select onchange="salvaInput(infoRaça5)" name="infoRaça5" id="infoRaça5">
+                                        <optgroup label="Anão">
+                                            <option value="anao">Anão</option>
+                                            <option value="anaoDaColina">Anão da Colina</option>
+                                            <option value="anaoDaMontanha">Anão da Montanha</option>
+                                        </optgroup>
+                                        
+                                        <optgroup label="Elfo">
+                                            <option value="elfo">Elfo</option>
+                                            <option value="altoElfo">Alto Elfo</option>
+                                            <option value="elfoDaFloresta">Elfo da Floresta</option>
+                                            <option value="elfoNegro">Elfo Negro</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Halfling">
+                                            <option value="halfling">Halfling</option>
+                                            <option value="halflingLightfoot">Halfling Pés Leves</option>
+                                            <option value="halflingStout">Halfling Robusto</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Humano">
+                                            <option value="humano">Humano</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Draconato">
+                                            <option value="draconato">Draconato</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Gnomo">
+                                            <option value="gnomo">Gnomo</option>
+                                            <option value="gnomoDaFloresta">Gnomo da Floresta</option>
+                                            <option value="gnomoDaPedra">Gnomo da Pedra</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Elfo">
+                                            <option value="meioElfo">Meio-Elfo</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Orc">
+                                            <option value="meioOrc">Meio-Orc</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Tiefling">
+                                            <option value="tiefling">Tiefling</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <p><label for="tendencia5">Tendência: </label><select onchange="salvaInput(tendencia5)" name="tendencia5" id="tendencia5">
+                                        <optgroup label="Leal">
+                                            <option value="lealBom">Leal e Bom</option>
+                                            <option value="lealNeutro">Leal e Neutro</option>
+                                            <option value="lealMau">Leal e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Neutro">
+                                            <option value="neutroBom">Neutro e Bom</option>
+                                            <option value="neutro">Neutro</option>
+                                            <option value="neutroMau">Neutro e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Caótico">
+                                            <option value="caoticoBom">Caótico e Bom</option>
+                                            <option value="caoticoNeutro">Caótico e Neutro</option>
+                                            <option value="caoticoMau">Caótico e Mau</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <div class="info-inputs">
+                                        <p><label for="pontosXp5">Pontos XP: </label><input onchange="salvaInput(pontosXp5)" type="number" name="pontosXp5" id="pontosXp5" min="0"></p>
+                    
+                                        <p><label for="ca5">CA: </label><input onchange="salvaInput(ca5)" type="number" name="ca5" id="ca5" min="0"></p>
+                    
+                                        <p><label for="iniciativa5">Iniciativa: </label><input onchange="salvaInput(iniciativa5)" type="number" name="iniciativa5" id="iniciativa5" min="0"></p>
+                    
+                                        <p><label for="vida5">Pts de Vida: </label><input onchange="salvaInput(vida5)" type="number" name="vida5" id="vida5" min="0"></p>
+                                    </div>
+                                </form>  
+                            </div>
+                    
+                            <div id="habilidade-personagem5" class="habilidade-personagem">
+                                <span id="legenda-habilidade5">Habilidade: </span>
+                                <form action="" id="HabPCarta5">
+                                    <p class="first-hab"><label for="força5">FOR </label><input onchange="salvaInput(força5)" type="text" name="força5" id="força5"></p>
+                                    <p><label for="destreza5">DES </label><input onchange="salvaInput(destreza5)" type="text" name="destreza5" id="destreza5"></p>
+                                    <p><label for="constituicao5">CON </label><input onchange="salvaInput(constituicao5)" type="text" name="constituicao5" id="constituicao5"></p>
+                                    <p><label for="inteligencia5">INT </label><input onchange="salvaInput(inteligencia5)" type="text" name="inteligencia5" id="inteligencia5"></p>
+                                    <p><label for="sabedoria5">SAB </label><input onchange="salvaInput(sabedoria5)" type="text" name="sabedoria5" id="sabedoria5"></p>
+                                    <p><label for="carisma5">CAR </label><input onchange="salvaInput(carisma5)" type="text" name="carisma5" id="carisma5"></p>
+                                </form>
+                            </div>
+                        </div>
+                    
+                        <div id="botoes5" class="botoes">
+                            <button id="limpaCarta5" onclick="limpa(5)">Limpar</button>
+                            <button id="salvaCarta5" onclick="salvaEdita(5)">Salvar</button>
+                            <button id="excluiCarta5" onclick="excluiCarta(5)">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div id="carta-jogador6" class="carta">
+                        <div id="nome-jogador6" class="nome-jogador">
+                            <form action="" id="nomeJCarta6">
+                                <label for="nomeJogador6">Jogador: </label><input onchange="salvaInput(nomeJogador6)" type="text" name="nomeJogador6" id="nomeJogador6" placeholder="Nome do jogador 6...">
+                            </form>
+                        </div>
+                    
+                        <div id="foto-personagem6" class="foto-personagem"></div>
+                    
+                        <div id="nome-personagem6" class="nome-personagem">
+                            <form action="" id="nomePCarta6">
+                                <label for="nomePersonagem6">Personagem: </label><input onchange="salvaInput(nomePersonagem6)" type="text" name="nomePersonagem6" id="nomePersonagem6" placeholder="Nome do personagem...">
+                            </form>
+                        </div>
+                    
+                        <div id="dados-personagem6" class="dados-personagem">
+                            <div id="info-personagem6" class="info-personagem">
+                                <form action="" id="infoPCarta6">
+                                    <p class="first-info"><label for="infoClasse6">Classe: </label><select onchange="salvaInput(infoClasse6)" name="infoClasse6" id="infoClasse6">
+                                        <option value="barbaro">Bárbaro</option>
+                                        <option value="bardo">Bardo</option>
+                                        <option value="bruxo">Bruxo</option>
+                                        <option value="clerigo">Clérigo</option>
+                                        <option value="druida">Druida</option>
+                                        <option value="feiticeiro">Feiticeiro</option>
+                                        <option value="guerreiro">Guerreiro</option>
+                                        <option value="ladino">Ladino</option>
+                                        <option value="mago">Mago</option>
+                                        <option value="monge">Monge</option>
+                                        <option value="paladino">Paladino</option>
+                                        <option value="patrulheiro">Patrulheiro</option>
+                                    </select></p>
+                    
+                                    <p><label for="infoRaça6">Raça: </label><select onchange="salvaInput(infoRaça6)" name="infoRaça6" id="infoRaça6">
+                                        <optgroup label="Anão">
+                                            <option value="anao">Anão</option>
+                                            <option value="anaoDaColina">Anão da Colina</option>
+                                            <option value="anaoDaMontanha">Anão da Montanha</option>
+                                        </optgroup>
+                                        
+                                        <optgroup label="Elfo">
+                                            <option value="elfo">Elfo</option>
+                                            <option value="altoElfo">Alto Elfo</option>
+                                            <option value="elfoDaFloresta">Elfo da Floresta</option>
+                                            <option value="elfoNegro">Elfo Negro</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Halfling">
+                                            <option value="halfling">Halfling</option>
+                                            <option value="halflingLightfoot">Halfling Pés Leves</option>
+                                            <option value="halflingStout">Halfling Robusto</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Humano">
+                                            <option value="humano">Humano</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Draconato">
+                                            <option value="draconato">Draconato</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Gnomo">
+                                            <option value="gnomo">Gnomo</option>
+                                            <option value="gnomoDaFloresta">Gnomo da Floresta</option>
+                                            <option value="gnomoDaPedra">Gnomo da Pedra</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Elfo">
+                                            <option value="meioElfo">Meio-Elfo</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Orc">
+                                            <option value="meioOrc">Meio-Orc</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Tiefling">
+                                            <option value="tiefling">Tiefling</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <p><label for="tendencia6">Tendência: </label><select onchange="salvaInput(tendencia6)" name="tendencia6" id="tendencia6">
+                                        <optgroup label="Leal">
+                                            <option value="lealBom">Leal e Bom</option>
+                                            <option value="lealNeutro">Leal e Neutro</option>
+                                            <option value="lealMau">Leal e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Neutro">
+                                            <option value="neutroBom">Neutro e Bom</option>
+                                            <option value="neutro">Neutro</option>
+                                            <option value="neutroMau">Neutro e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Caótico">
+                                            <option value="caoticoBom">Caótico e Bom</option>
+                                            <option value="caoticoNeutro">Caótico e Neutro</option>
+                                            <option value="caoticoMau">Caótico e Mau</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <div class="info-inputs">
+                                        <p><label for="pontosXp6">Pontos XP: </label><input onchange="salvaInput(pontosXp6)" type="number" name="pontosXp6" id="pontosXp6" min="0"></p>
+                    
+                                        <p><label for="ca6">CA: </label><input onchange="salvaInput(ca6)" type="number" name="ca6" id="ca6" min="0"></p>
+                    
+                                        <p><label for="iniciativa6">Iniciativa: </label><input onchange="salvaInput(iniciativa6)" type="number" name="iniciativa6" id="iniciativa6" min="0"></p>
+                    
+                                        <p><label for="vida6">Pts de Vida: </label><input onchange="salvaInput(vida6)" type="number" name="vida6" id="vida6" min="0"></p>
+                                    </div>
+                                </form>  
+                            </div>
+                    
+                            <div id="habilidade-personagem6" class="habilidade-personagem">
+                                <span id="legenda-habilidade6">Habilidade: </span>
+                                <form action="" id="HabPCarta6">
+                                    <p class="first-hab"><label for="força6">FOR </label><input onchange="salvaInput(força6)" type="text" name="força6" id="força6"></p>
+                                    <p><label for="destreza6">DES </label><input onchange="salvaInput(destreza6)" type="text" name="destreza6" id="destreza6"></p>
+                                    <p><label for="constituicao6">CON </label><input onchange="salvaInput(constituicao6)" type="text" name="constituicao6" id="constituicao6"></p>
+                                    <p><label for="inteligencia6">INT </label><input onchange="salvaInput(inteligencia6)" type="text" name="inteligencia6" id="inteligencia6"></p>
+                                    <p><label for="sabedoria6">SAB </label><input onchange="salvaInput(sabedoria6)" type="text" name="sabedoria6" id="sabedoria6"></p>
+                                    <p><label for="carisma6">CAR </label><input onchange="salvaInput(carisma6)" type="text" name="carisma6" id="carisma6"></p>
+                                </form>
+                            </div>
+                        </div>
+                    
+                        <div id="botoes6" class="botoes">
+                            <button id="limpaCarta6" onclick="limpa(6)">Limpar</button>
+                            <button id="salvaCarta6" onclick="salvaEdita(6)">Salvar</button>
+                            <button id="excluiCarta6" onclick="excluiCarta(6)">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div id="carta-jogador7" class="carta">
+                        <div id="nome-jogador7" class="nome-jogador">
+                            <form action="" id="nomeJCarta7">
+                                <label for="nomeJogador7">Jogador: </label><input onchange="salvaInput(nomeJogador7)" type="text" name="nomeJogador7" id="nomeJogador7" placeholder="Nome do jogador 7...">
+                            </form>
+                        </div>
+                    
+                        <div id="foto-personagem7" class="foto-personagem"></div>
+                    
+                        <div id="nome-personagem7" class="nome-personagem">
+                            <form action="" id="nomePCarta7">
+                                <label for="nomePersonagem7">Personagem: </label><input onchange="salvaInput(nomePersonagem7)" type="text" name="nomePersonagem7" id="nomePersonagem7" placeholder="Nome do personagem...">
+                            </form>
+                        </div>
+                    
+                        <div id="dados-personagem7" class="dados-personagem">
+                            <div id="info-personagem7" class="info-personagem">
+                                <form action="" id="infoPCarta7">
+                                    <p class="first-info"><label for="infoClasse7">Classe: </label><select onchange="salvaInput(infoClasse7)" name="infoClasse7" id="infoClasse7">
+                                        <option value="barbaro">Bárbaro</option>
+                                        <option value="bardo">Bardo</option>
+                                        <option value="bruxo">Bruxo</option>
+                                        <option value="clerigo">Clérigo</option>
+                                        <option value="druida">Druida</option>
+                                        <option value="feiticeiro">Feiticeiro</option>
+                                        <option value="guerreiro">Guerreiro</option>
+                                        <option value="ladino">Ladino</option>
+                                        <option value="mago">Mago</option>
+                                        <option value="monge">Monge</option>
+                                        <option value="paladino">Paladino</option>
+                                        <option value="patrulheiro">Patrulheiro</option>
+                                    </select></p>
+                    
+                                    <p><label for="infoRaça7">Raça: </label><select onchange="salvaInput(infoRaça7)" name="infoRaça7" id="infoRaça7">
+                                        <optgroup label="Anão">
+                                            <option value="anao">Anão</option>
+                                            <option value="anaoDaColina">Anão da Colina</option>
+                                            <option value="anaoDaMontanha">Anão da Montanha</option>
+                                        </optgroup>
+                                        
+                                        <optgroup label="Elfo">
+                                            <option value="elfo">Elfo</option>
+                                            <option value="altoElfo">Alto Elfo</option>
+                                            <option value="elfoDaFloresta">Elfo da Floresta</option>
+                                            <option value="elfoNegro">Elfo Negro</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Halfling">
+                                            <option value="halfling">Halfling</option>
+                                            <option value="halflingLightfoot">Halfling Pés Leves</option>
+                                            <option value="halflingStout">Halfling Robusto</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Humano">
+                                            <option value="humano">Humano</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Draconato">
+                                            <option value="draconato">Draconato</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Gnomo">
+                                            <option value="gnomo">Gnomo</option>
+                                            <option value="gnomoDaFloresta">Gnomo da Floresta</option>
+                                            <option value="gnomoDaPedra">Gnomo da Pedra</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Elfo">
+                                            <option value="meioElfo">Meio-Elfo</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Orc">
+                                            <option value="meioOrc">Meio-Orc</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Tiefling">
+                                            <option value="tiefling">Tiefling</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <p><label for="tendencia7">Tendência: </label><select onchange="salvaInput(tendencia7)" name="tendencia7" id="tendencia7">
+                                        <optgroup label="Leal">
+                                            <option value="lealBom">Leal e Bom</option>
+                                            <option value="lealNeutro">Leal e Neutro</option>
+                                            <option value="lealMau">Leal e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Neutro">
+                                            <option value="neutroBom">Neutro e Bom</option>
+                                            <option value="neutro">Neutro</option>
+                                            <option value="neutroMau">Neutro e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Caótico">
+                                            <option value="caoticoBom">Caótico e Bom</option>
+                                            <option value="caoticoNeutro">Caótico e Neutro</option>
+                                            <option value="caoticoMau">Caótico e Mau</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <div class="info-inputs">
+                                        <p><label for="pontosXp7">Pontos XP: </label><input onchange="salvaInput(pontosXp7)" type="number" name="pontosXp7" id="pontosXp7" min="0"></p>
+                    
+                                        <p><label for="ca7">CA: </label><input onchange="salvaInput(ca7)" type="number" name="ca7" id="ca7" min="0"></p>
+                    
+                                        <p><label for="iniciativa7">Iniciativa: </label><input onchange="salvaInput(iniciativa7)" type="number" name="iniciativa7" id="iniciativa7" min="0"></p>
+                    
+                                        <p><label for="vida7">Pts de Vida: </label><input onchange="salvaInput(vida7)" type="number" name="vida7" id="vida7" min="0"></p>
+                                    </div>
+                                </form>  
+                            </div>
+                    
+                            <div id="habilidade-personagem7" class="habilidade-personagem">
+                                <span id="legenda-habilidade7">Habilidade: </span>
+                                <form action="" id="HabPCarta7">
+                                    <p class="first-hab"><label for="força7">FOR </label><input onchange="salvaInput(força7)" type="text" name="força7" id="força7"></p>
+                                    <p><label for="destreza7">DES </label><input onchange="salvaInput(destreza7)" type="text" name="destreza7" id="destreza7"></p>
+                                    <p><label for="constituicao7">CON </label><input onchange="salvaInput(constituicao7)" type="text" name="constituicao7" id="constituicao7"></p>
+                                    <p><label for="inteligencia7">INT </label><input onchange="salvaInput(inteligencia7)" type="text" name="inteligencia7" id="inteligencia7"></p>
+                                    <p><label for="sabedoria7">SAB </label><input onchange="salvaInput(sabedoria7)" type="text" name="sabedoria7" id="sabedoria7"></p>
+                                    <p><label for="carisma7">CAR </label><input onchange="salvaInput(carisma7)" type="text" name="carisma7" id="carisma7"></p>
+                                </form>
+                            </div>
+                        </div>
+                    
+                        <div id="botoes7" class="botoes">
+                            <button id="limpaCarta7" onclick="limpa(7)">Limpar</button>
+                            <button id="salvaCarta7" onclick="salvaEdita(7)">Salvar</button>
+                            <button id="excluiCarta7" onclick="excluiCarta(7)">Excluir</button>
+                        </div>
+                    </div>
+
+                    <div id="carta-jogador8" class="carta">
+                        <div id="nome-jogador8" class="nome-jogador">
+                            <form action="" id="nomeJCarta8">
+                                <label for="nomeJogador8">Jogador: </label><input onchange="salvaInput(nomeJogador8)" type="text" name="nomeJogador8" id="nomeJogador8" placeholder="Nome do jogador 8...">
+                            </form>
+                        </div>
+                    
+                        <div id="foto-personagem8" class="foto-personagem"></div>
+                    
+                        <div id="nome-personagem8" class="nome-personagem">
+                            <form action="" id="nomePCarta8">
+                                <label for="nomePersonagem8">Personagem: </label><input onchange="salvaInput(nomePersonagem8)" type="text" name="nomePersonagem8" id="nomePersonagem8" placeholder="Nome do personagem...">
+                            </form>
+                        </div>
+                    
+                        <div id="dados-personagem8" class="dados-personagem">
+                            <div id="info-personagem8" class="info-personagem">
+                                <form action="" id="infoPCarta8">
+                                    <p class="first-info"><label for="infoClasse8">Classe: </label><select onchange="salvaInput(infoClasse8)" name="infoClasse8" id="infoClasse8">
+                                        <option value="barbaro">Bárbaro</option>
+                                        <option value="bardo">Bardo</option>
+                                        <option value="bruxo">Bruxo</option>
+                                        <option value="clerigo">Clérigo</option>
+                                        <option value="druida">Druida</option>
+                                        <option value="feiticeiro">Feiticeiro</option>
+                                        <option value="guerreiro">Guerreiro</option>
+                                        <option value="ladino">Ladino</option>
+                                        <option value="mago">Mago</option>
+                                        <option value="monge">Monge</option>
+                                        <option value="paladino">Paladino</option>
+                                        <option value="patrulheiro">Patrulheiro</option>
+                                    </select></p>
+                    
+                                    <p><label for="infoRaça8">Raça: </label><select onchange="salvaInput(infoRaça8)" name="infoRaça8" id="infoRaça8">
+                                        <optgroup label="Anão">
+                                            <option value="anao">Anão</option>
+                                            <option value="anaoDaColina">Anão da Colina</option>
+                                            <option value="anaoDaMontanha">Anão da Montanha</option>
+                                        </optgroup>
+                                        
+                                        <optgroup label="Elfo">
+                                            <option value="elfo">Elfo</option>
+                                            <option value="altoElfo">Alto Elfo</option>
+                                            <option value="elfoDaFloresta">Elfo da Floresta</option>
+                                            <option value="elfoNegro">Elfo Negro</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Halfling">
+                                            <option value="halfling">Halfling</option>
+                                            <option value="halflingLightfoot">Halfling Pés Leves</option>
+                                            <option value="halflingStout">Halfling Robusto</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Humano">
+                                            <option value="humano">Humano</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Draconato">
+                                            <option value="draconato">Draconato</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Gnomo">
+                                            <option value="gnomo">Gnomo</option>
+                                            <option value="gnomoDaFloresta">Gnomo da Floresta</option>
+                                            <option value="gnomoDaPedra">Gnomo da Pedra</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Elfo">
+                                            <option value="meioElfo">Meio-Elfo</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Meio-Orc">
+                                            <option value="meioOrc">Meio-Orc</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Tiefling">
+                                            <option value="tiefling">Tiefling</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <p><label for="tendencia8">Tendência: </label><select onchange="salvaInput(tendencia8)" name="tendencia8" id="tendencia8">
+                                        <optgroup label="Leal">
+                                            <option value="lealBom">Leal e Bom</option>
+                                            <option value="lealNeutro">Leal e Neutro</option>
+                                            <option value="lealMau">Leal e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Neutro">
+                                            <option value="neutroBom">Neutro e Bom</option>
+                                            <option value="neutro">Neutro</option>
+                                            <option value="neutroMau">Neutro e Mau</option>
+                                        </optgroup>
+                    
+                                        <optgroup label="Caótico">
+                                            <option value="caoticoBom">Caótico e Bom</option>
+                                            <option value="caoticoNeutro">Caótico e Neutro</option>
+                                            <option value="caoticoMau">Caótico e Mau</option>
+                                        </optgroup>
+                                    </select></p>
+                    
+                                    <div class="info-inputs">
+                                        <p><label for="pontosXp8">Pontos XP: </label><input onchange="salvaInput(pontosXp8)" type="number" name="pontosXp8" id="pontosXp8" min="0"></p>
+                    
+                                        <p><label for="ca8">CA: </label><input onchange="salvaInput(ca8)" type="number" name="ca8" id="ca8" min="0"></p>
+                    
+                                        <p><label for="iniciativa8">Iniciativa: </label><input onchange="salvaInput(iniciativa8)" type="number" name="iniciativa8" id="iniciativa8" min="0"></p>
+                    
+                                        <p><label for="vida8">Pts de Vida: </label><input onchange="salvaInput(vida8)" type="number" name="vida8" id="vida8" min="0"></p>
+                                    </div>
+                                </form>  
+                            </div>
+                    
+                            <div id="habilidade-personagem8" class="habilidade-personagem">
+                                <span id="legenda-habilidade8">Habilidade: </span>
+                                <form action="" id="HabPCarta8">
+                                    <p class="first-hab"><label for="força8">FOR </label><input onchange="salvaInput(força8)" type="text" name="força8" id="força8"></p>
+                                    <p><label for="destreza8">DES </label><input onchange="salvaInput(destreza8)" type="text" name="destreza8" id="destreza8"></p>
+                                    <p><label for="constituicao8">CON </label><input onchange="salvaInput(constituicao8)" type="text" name="constituicao8" id="constituicao8"></p>
+                                    <p><label for="inteligencia8">INT </label><input onchange="salvaInput(inteligencia8)" type="text" name="inteligencia8" id="inteligencia8"></p>
+                                    <p><label for="sabedoria8">SAB </label><input onchange="salvaInput(sabedoria8)" type="text" name="sabedoria8" id="sabedoria8"></p>
+                                    <p><label for="carisma8">CAR </label><input onchange="salvaInput(carisma8)" type="text" name="carisma8" id="carisma8"></p>
+                                </form>
+                            </div>
+                        </div>
+                    
+                        <div id="botoes8" class="botoes">
+                            <button id="limpaCarta8" onclick="limpa(8)">Limpar</button>
+                            <button id="salvaCarta8" onclick="salvaEdita(8)">Salvar</button>
+                            <button id="excluiCarta8" onclick="excluiCarta(8)">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside id="lateral">
+                <section id="secao-anotacoes">
+                    <h2>Anotações</h2>
+                    <hr>
+
+                    <textarea onchange="salvaAnotacao()" name="anotacoes" id="anotacoes" cols="30" rows="10" spellcheck="false" placeholder="Faça suas anotações aqui..."></textarea>
+
+                    <button onclick="limparAnotacao()" id="button-anotacao" class="button">Limpar</button>
+                </section>
+                
+                <section id="clima">
+                    <h2>Clima</h2>
+                    <hr>
+
+                    <button onclick="geraClima()" id="geraClima" class="botaoGeraClima">Clique para gerar</button>
+
+                </section>
+
+                <section id="informacoes-uteis">
+                    <h2>Informações Úteis</h2>
+                    <hr>
+
+                    <article id="classes-dificuldade">
+                        <table id="tabela-classes-dificuldade" class="tabela-lateral">
+                            <caption>Classes de Dificuldade</caption>
+                            <tr class="primeiraLinha">
+                                <td class="ce">Dificuldade</td>
+                                <td>CD</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Muito Fácil</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Fácil</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Moderado</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Difícil</td>
+                                <td>20</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Muito difícil</td>
+                                <td>25</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Quase impossível</td>
+                                <td>30</td>
+                            </tr>
+                        </table>
+                    </article>
+
+                    <article id="multiplicador-xp">
+                        <table id="tabela-multiplicador-xp" class="tabela-lateral">
+                            <caption>Multiplicador de XP</caption>
+                            <tr class="primeiraLinha">
+                                <td class="ce">Qtd de Monstros</td>
+                                <td>XP</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Solitário</td>
+                                <td>x1.5</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Par</td>
+                                <td>x2</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Grupo (3 a 6)</td>
+                                <td>x2.5</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Gangue (7 a 10)</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Bando (11 a 14)</td>
+                                <td>x3.5</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Horda (+15)</td>
+                                <td>x4</td>
+                            </tr>
+                        </table>
+                    </article>
+
+                    <article id="xp-por-nd">
+                        <table id="tabela-xp-por-nd" class="tabela-lateral">
+                            <caption>XP por Nível de Personagem</caption>
+                            <tr>
+                                <td class="ce">Fácil</td>
+                                <td>25 x ND</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Médio</td>
+                                <td>50 x ND</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Difícil</td>
+                                <td>75 x ND</td>
+                            </tr>
+                            <tr>
+                                <td class="ce">Mortal</td>
+                                <td>100 x ND</td>
+                            </tr>
+                        </table>
+                    </article>
+                </section>
+            </aside>
+        </main>
+
+        <footer id="rodape">
+            <p id="rodape-conheca">Conheça meu trabalho!</p>
+            <ul>
+                <a target="_blank" href="https://github.com/NycolasFelipe"><img class="footer-icon" src="img/github.png" alt="GitHub icon"><li>GitHub</li></a>
+
+                <a target="_blank" href="https://www.linkedin.com/in/nycolas-felipe-louren%C3%A7o-0448b6150/"><img class="footer-icon linkedin" src="img/linkedin.png" alt="LinkedIn icon"><li>LinkedIn</li></a>
+
+                <a target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=nycolasfelipe.contato@gmail.com&su=CONTACT"><img class="footer-icon" src="img/mail.png" alt="Email icon"><li>Send an email</li></a>
+            </ul>
+
+            <p id="rodape-copyright">&copy; 2020 Copyright — Designed by NycolasFelipe</p>
+        </footer>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
