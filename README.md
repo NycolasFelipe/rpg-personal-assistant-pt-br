@@ -10,6 +10,8 @@ Minha ideia então, foi criar um lugar único — ou um assistente, que pudesse 
 ### Rolagem de dados
 Na seção "Rolagem de dados", é possível rolar dados do d4, até o d20 (que são os mais utilizados em RPG).
 
+![gif rolagem de dados](rolagem-dados.gif)
+
 ### Trilha Sonora
 Para melhor imersão no jogo, é comum o uso de trilhas sonoras em aplicativos de voz, como o DISCORD, através de bots de música.  
 Pensando nisso, eu criei a seção "Trilha Sonora", onde ao clicar em um dos tipos de trilha, é copiada para área de transferência um comando (!play), seguido de um link do youtube referente ao tipo de faixa.  
@@ -17,9 +19,13 @@ Pensando nisso, eu criei a seção "Trilha Sonora", onde ao clicar em um dos tip
 Dessa forma, só é necessário colar o comando no canal em que o bot também está, e a música será reproduzida.  
 Exemplo: Trilha de Taverna - !play https://youtu.be/dd10InDdvJE
 
+![gif trilha sonora](trilha-sonora.gif)
+
 ### Cartas (ou fichas) dos Jogadores
 Através do uso das cartas (fichas resumidas dos jogadores), é possível fazer um breve resumo da ficha de cada jogador.  
 Podem ser criadas até 8 cartas.
+
+![gif cartas dos jogadores](jogadores.gif)
 
 ### Anotações
 Nesta seção, é possível fazer suas anotações.
@@ -34,6 +40,8 @@ Na seção clima, eu criei uma espécie de "gerador de clima", cuja função é,
 * Chuva
 * Chuva leve
 * Tempestade/Nevasca
+
+![gif clima](clima.gif)
 
 ### Informações úteis
 Na aba de informações úteis eu adicionei alguns dados e tabelas que eu considero que seriam úteis durante o jogo, tais como:
