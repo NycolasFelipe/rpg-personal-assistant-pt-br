@@ -192,6 +192,7 @@ div#modo-noturno {
 
 img#tocha {
     width: 60px;
+    filter: drop-shadow(1px 1px 1px #00000085);
 }
 
 img#tocha:hover {
@@ -317,6 +318,7 @@ span#info-trilha1 {
     right: 25px;
     top: 15px;
     cursor: pointer;
+    filter: drop-shadow(1px 1px 1px #00000085);
 }
 
 span#info-trilha1:hover {
@@ -414,6 +416,7 @@ img#icone-lixeira {
     right: 15px;
     top: 15px;
     cursor: pointer;
+    filter: drop-shadow(1px 1px 1px #00000085);
 }
 
 span#legenda-lixeira {
