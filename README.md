@@ -57,3 +57,7 @@ Dessa forma, é possível utilizar a ferramenta sem a necessidade de sempre pree
 
 ## Tradução
 Estou trabalhando em uma versão em inglês do site, que não deve demorar muito a sair.
+
+---
+
+Obrigado por ler até aqui!
