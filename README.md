@@ -54,3 +54,6 @@ Minha ideia era que o S.A.U.R.O.N. pudesse ser usado em várias sessões de RPG.
 
 Assim, eu criei um mecanismo que salva os dados no armazenamento local da navegador do usuário. Ou seja, os todos os dados são salvos localmente, automaticamente.  
 Dessa forma, é possível utilizar a ferramenta sem a necessidade de sempre preencher as fichas e anotações novamente.
+
+## Tradução
+Estou trabalhando em uma versão em inglês do site, que não deve demorar muito a sair.
